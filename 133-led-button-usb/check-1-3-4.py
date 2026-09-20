@@ -31,7 +31,10 @@ def talk(board):
         port.reset_input_buffer()
         started = time.monotonic()
         for command in COMMANDS:
+            # Добавляем очистку буфера перед отправкой команды
+            # Если в порт был отправлен вывод от кнопки, то скрипт его не увидиит:
             port.reset_input_buffer()
+            #
             port.write(command.encode("ascii"))
             exchange.append((time.monotonic() - started, "-->", command))
             answer = port.readline().decode("ascii", "replace").strip()
