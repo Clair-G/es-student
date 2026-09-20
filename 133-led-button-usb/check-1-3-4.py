@@ -31,6 +31,7 @@ def talk(board):
         port.reset_input_buffer()
         started = time.monotonic()
         for command in COMMANDS:
+            port.reset_input_buffer()
             port.write(command.encode("ascii"))
             exchange.append((time.monotonic() - started, "-->", command))
             answer = port.readline().decode("ascii", "replace").strip()
