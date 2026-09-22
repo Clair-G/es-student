@@ -4,6 +4,7 @@
 #include "led.h"
 #include "log.h"
 #include "device.h"
+#include "memory.h"
 
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
