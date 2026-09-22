@@ -24,6 +24,8 @@ void cmd_disable(void);
 void cmd_info(void);
 void cmd_version(void);
 void cmd_ping(void);
+void cmd_version(void);
+void cmd_mem_info(void);
 
 struct command_t
 {
@@ -37,6 +39,7 @@ const struct command_t commands[] = {
     { "info", cmd_info },
     { "version", cmd_version },
     { "ping", cmd_ping },
+	{ "mem_info", cmd_mem_info },
 };
 
 
@@ -71,6 +74,11 @@ void cmd_ping(void)
 {
     // печатаем строку журнала о версии прошивки
 	printf("pong\n");
+}
+
+void cmd_mem_info(void)
+{
+	mem_info();
 }
 
 bool get_button_debounce(uint pin)
