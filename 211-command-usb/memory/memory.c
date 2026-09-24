@@ -9,8 +9,8 @@
 #include "command.h"
 #include "device.h"
 
-extern uint32_t data_variable;
-extern uint32_t bss_variable;
+uint32_t data_variable=100;
+uint32_t bss_variable;
 
 int main(void);
 

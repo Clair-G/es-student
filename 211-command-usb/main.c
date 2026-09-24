@@ -21,8 +21,6 @@ const uint BUTTON_PIN = 15;
 
 const uint DEBOUNCE_MS = 20;
 
-uint32_t data_variable = 100;
-uint32_t bss_variable;
 
 void cmd_enable(void);
 void cmd_disable(void);
