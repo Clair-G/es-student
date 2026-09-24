@@ -1,8 +1,18 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
+
 #include "hardware/regs/addressmap.h"
 #include "pico/stdlib.h"
+
 #include "memory.h"
+#include "command.h"
+#include "device.h"
+
+extern uint32_t data_variable;
+extern uint32_t bss_variable;
+
+int main(void);
 
 extern char __flash_binary_start;
 extern char __flash_binary_end;
@@ -86,4 +96,49 @@ void mem_info(void)
 	printf("\tram free\t %8u for heap and %8u for stack\n",
 			(&__HeapLimit - &__bss_end__),
 			(&__StackTop - &__StackBottom));
+			
+	return;
+}
+
+void fw_info(void)
+{
+	data_variable++;
+	bss_variable++;
+	
+	printf("%-16s %-10s %-10s\n",
+           "object", "address", "value");
+		   
+	uint16_t *main_code = (uint16_t *)((uintptr_t)main & ~1u);	   
+	printf("%-16s 0x%08x 0x%08x\n", "main", main, *main_code);	
+	
+	uint16_t *fw_code = (uint16_t *)((uintptr_t)fw_info & ~1u);	   
+	printf("%-16s 0x%08x 0x%08x\n", "fw_info", fw_info, *fw_code);	
+	
+	printf("%-16s 0x%08x\n", "commands", &commands);	
+	for (uint i = 0; i < command_count; i++)
+	{
+	//	uint16_t *command_code_real = (uint16_t *)(uintptr_t)commands[i].handler;
+		printf("- %-16s 0x%08x\n", commands[i].name, commands[i].handler);
+	}
+	
+
+	printf("%-16s 0x%08x %-10s\n", "DEVICE_PROJECT", &DEVICE_PROJECT, DEVICE_PROJECT);
+	printf("%-16s 0x%08x %-10s\n", "DEVICE_BOARD", &DEVICE_BOARD, DEVICE_BOARD);
+	printf("%-16s 0x%08x %-10u\n", "data_variable", &data_variable, data_variable);
+	printf("%-16s 0x%08x %-10u\n", "bss_variable", &bss_variable, bss_variable);
+	
+	uint32_t stack_variable = 1946;
+	uint32_t *st_var = &stack_variable;
+	printf("%-16s 0x%08x %-10u\n", "stack_variable", st_var, stack_variable);
+	
+    uint32_t *heap_variable = malloc(sizeof(uint32_t));
+
+    if (heap_variable != NULL)
+    {
+        *heap_variable = 1951;
+		printf("%-16s 0x%08x %-10u\n", "heap_variable", heap_variable, *heap_variable);
+    }
+	
+	free(heap_variable);
+	return;
 }
