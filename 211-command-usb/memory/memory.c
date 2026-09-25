@@ -9,6 +9,11 @@
 #include "command.h"
 #include "device.h"
 
+#define VECTOR_TABLE 0x10000100
+const uint32_t *vectors = (const uint32_t *)VECTOR_TABLE;
+
+volatile uint32_t *gpio_in = (uint32_t *)(SIO_BASE + SIO_GPIO_IN_OFFSET);
+
 uint32_t data_variable=100;
 uint32_t bss_variable;
 
@@ -141,4 +146,20 @@ void fw_info(void)
 	
 	free(heap_variable);
 	return;
+}
+
+void boot_info(void)
+{
+	uint32_t stack_top = vectors[0];
+	uint32_t reset_handler = vectors[1];
+	
+	printf("%-16s 0x%08x\n", "vector table", vectors);
+	printf("  %-14s 0x%08x\n", "stack top ", stack_top);
+	printf("  %-14s 0x%08x\n", "reset", reset_handler);
+	printf("  %-14s 0x%08x\n", "reset (even)", reset_handler & ~1u);
+	printf("%-16s 0x%08x\n", "gpio in", gpio_in);
+    uint32_t level = (*gpio_in >> led_pin()) & 1u;
+	printf("  %-14s %u\n", "led bit", level);
+	printf("  %-14s %u\n", "gpio_get", gpio_get(led_pin()));
+	
 }
