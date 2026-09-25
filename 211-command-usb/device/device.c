@@ -47,24 +47,26 @@ void dev_info(void)
            "device_card",
            &device_card,
            sizeof(device_card));           ;		
-    printf("- %-13s 0x%08x %5u %6u %8u\n",
-           "revision",
-           &device_card.revision,
-           sizeof(device_card.revision),
-           offsetof(struct info_t, revision),
-           device_card.revision);	
 	printf("- %-13s 0x%08x %5u %6u %8u\n",
            "version",
            &device_card.version,
            sizeof(device_card.version),
            offsetof(struct info_t, version),
-           device_card.version);							
+           device_card.version);
 	printf("- %-13s 0x%08x %5u %6u %-8s\n",
            "name",
            &device_card.name,
            sizeof(device_card.name),
            offsetof(struct info_t, name),
            device_card.name);	
+   printf("- %-13s 0x%08x %5u %6u %8u\n",
+           "revision",
+           &device_card.revision,
+           sizeof(device_card.revision),
+           offsetof(struct info_t, revision),
+           device_card.revision);	
+							
+
 		   
 	unsigned fields = sizeof(device_card.version) + sizeof(device_card.name) + 
 						sizeof(device_card.revision);		
