@@ -43,7 +43,7 @@ void dev_info(void)
 	// шапка таблицы
 	printf("%-15s %-11s %-4s %-6s %-8s\n",
            "struct", "address", "size", "offset", "value");
-	printf("- %-13s 0x%08x %5u \n",
+	printf("%-13s 0x%08x %5u \n",
            "device_card",
            &device_card,
            sizeof(device_card));           ;		
