@@ -30,6 +30,7 @@ void cmd_ping(void);
 void cmd_version(void);
 void cmd_mem_info(void);
 void cmd_fw_info(void);
+void cmd_dev_info(void);
 
 const struct command_t commands[] = {
     { "enable", cmd_enable },
@@ -39,6 +40,7 @@ const struct command_t commands[] = {
     { "ping", cmd_ping },
 	{ "mem_info", cmd_mem_info },
 	{ "fw_info", cmd_fw_info },
+	{ "dev_info", cmd_dev_info },
 };
 
 const uint command_count = sizeof(commands) / sizeof(commands[0]);
@@ -85,6 +87,10 @@ void cmd_fw_info(void)
 	fw_info();
 }
 
+void cmd_dev_info(void)
+{
+	dev_info();
+}
 
 bool get_button_debounce(uint pin)
 {
@@ -134,7 +140,16 @@ void read_line(void)
         line_length = 0;
         return;
     }
-
+/*	
+	if (symbol == '\b')
+	{	
+		line_length = line_length - 1;		//Укорачиваем набранную строчку на 1 символ
+		if (line_length < 0)
+			line_length = 0;
+		putchar(symbol);	//Сотрет на экране
+		return;
+	}	
+*/	
     if (line_length + 1 < LINE_SIZE)
     {
         line[line_length] = (char)symbol;
