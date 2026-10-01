@@ -16,10 +16,15 @@
 char line[LINE_SIZE];
 uint line_length = 0;
 
+// прикидка: за член ряда 4 операции с double, 175 + 110 + 190 + 110 = 585 тактов;
+// 1 000 000 членов по 585 тактов при 125 МГц — около 4,7 с
+const uint CALC_PI_TERMS = 1000000;
+
 const uint BLINK_HALF_PERIOD_MS = 500;
 
 uint64_t last_toggle_us = 0;
 
+volatile double pi_result;
 
 void cmd_info(void);
 void cmd_version(void);
@@ -31,6 +36,7 @@ void cmd_dev_info(void);
 void cmd_boot_info(void);
 void cmd_clk_info(void);
 void cmd_uptime(void);
+void cmd_calc_pi(void);
 
 const struct command_t commands[] = {
     { "info", cmd_info },
@@ -42,6 +48,7 @@ const struct command_t commands[] = {
 	{ "boot_info", cmd_boot_info },
 	{ "clk_info", cmd_clk_info },
 	{ "uptime", cmd_uptime },
+	{ "calc_pi", cmd_calc_pi },
 };
 
 const uint command_count = sizeof(commands) / sizeof(commands[0]);
@@ -163,6 +170,31 @@ void blink(void)
         last_toggle_us = now_us;
         led_toggle();
     }
+}
+
+double calc_pi(uint terms)
+{
+    // сумма ряда и знак очередного члена, оба double
+	double summ = 0;
+	double sign = 1;
+    // для k от 0 до terms: прибавить к сумме sign / (2k + 1) и сменить знак
+	for (int k = 0; k < terms; k++)
+	{
+		summ += sign / (2.0 * k + 1.0);
+        sign = -sign;
+	}
+    // вернуть сумму, умноженную на 4
+	return 4.0*summ;
+}
+
+void cmd_calc_pi(void)
+{
+    uint64_t start_us = time_us_64();
+    pi_result = calc_pi(CALC_PI_TERMS);
+    uint64_t spent_us = time_us_64() - start_us;
+
+    printf("pi: %.8f\n", pi_result);
+    printf("time: %llu ms\n", spent_us / 1000);
 }
 
 //-----------------
