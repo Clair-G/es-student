@@ -7,9 +7,11 @@
 #include "memory.h"
 #include "command.h"
 #include "clock.h"
+#include "profiling.h"
 
 #include "pico/stdlib.h"
 
+#define LOG_LEVEL LOG_LEVEL_ERR
 
 #define LINE_SIZE 32
 
@@ -37,6 +39,8 @@ void cmd_boot_info(void);
 void cmd_clk_info(void);
 void cmd_uptime(void);
 void cmd_calc_pi(void);
+void cmd_main_time_exec(void);
+void cmd_main_time_reset(void);
 
 const struct command_t commands[] = {
     { "info", cmd_info },
@@ -49,6 +53,8 @@ const struct command_t commands[] = {
 	{ "clk_info", cmd_clk_info },
 	{ "uptime", cmd_uptime },
 	{ "calc_pi", cmd_calc_pi },
+	{ "main_time_exec", cmd_main_time_exec },
+	{ "main_time_reset", cmd_main_time_reset },
 };
 
 const uint command_count = sizeof(commands) / sizeof(commands[0]);
@@ -99,6 +105,17 @@ void cmd_clk_info(void)
 void cmd_uptime(void)
 {
 	uptime();
+}
+
+void cmd_main_time_exec(void)
+{
+	printf("iteration avg %.2f us, max %u us\n", profiling_avg_us(), (unsigned)profiling_max_us());
+}
+
+void cmd_main_time_reset(void)
+{
+	profiling_reset_max();
+	printf("max reset\n");
 }
 // -------------------
 
@@ -203,10 +220,12 @@ int main()
 {
 	stdio_init_all();
 	led_init();
+	profiling_init();
 	
     while (1)
     {
-        blink();
+        profiling_iteration();
+		blink();
 	    
 		read_line();
   	
