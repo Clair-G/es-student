@@ -50,23 +50,27 @@ const command_t *stdio_text_protocol_handle(void)
 		if (line_length)
 			line_length = line_length - 1;
 		printf("\b \b");
-		return NULL;
+		
 	}
     
 	// печатный символ: кладём в буфер и повторяем в терминал;
-	if (line_length + 1 < STDIO_TEXT_PROTOCOL_LINE_SIZE)
-    {
-        command.truncated = false;
-		line[line_length] = (char)symbol;
-        line_length = line_length + 1;
-        putchar(symbol);
-    }
-    // буфер полон — помечаем строку как переполненную
-	//if (line_length >= STDIO_TEXT_PROTOCOL_LINE_SIZE)
-	else
-    {
-		command.truncated = true;
-    }
+	if (symbol >= 0x20 && symbol <=0x7e)
+	{
+		if (line_length + 1 < STDIO_TEXT_PROTOCOL_LINE_SIZE)
+		{
+			command.truncated = false;
+			line[line_length] = (char)symbol;
+			line_length = line_length + 1;
+			putchar(symbol);
+		}
+		// буфер полон — помечаем строку как переполненную
+		//if (line_length >= STDIO_TEXT_PROTOCOL_LINE_SIZE)
+		else
+		{
+			command.truncated = true;
+		}
+	}
+	
 	return NULL;
 }
 
