@@ -49,8 +49,18 @@ const uint api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
 
 void cmd_info(const command_t *command)
 {
-    // печатаем паспорт устройства
-	device_info();
+    device_info_t info;
+	device_get_info(&info);
+	// печатаем паспорт устройства
+	printf("name: %s\n", DEVICE_NAME);
+	printf("version: %s\n", FIRMWARE_VERSION);
+	// печатаем пять строк паспорта
+	printf("project: %s\n", DEVICE_PROJECT);
+    printf("repo: %s\n", DEVICE_REPO);
+    printf("board: %s\n", info.board_type);//!
+    printf("serial: %s\n", info.board_id);
+    printf("chip: manufacturer 0x%03lx, part 0x%04lx, revision %lu\n", info.manufacturer, info.part, info.revision);
+	printf("pico-sdk: %s\n", PICO_SDK_VERSION_STRING);
 }
 
 void cmd_uptime(const command_t *command)

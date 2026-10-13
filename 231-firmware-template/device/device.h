@@ -12,8 +12,10 @@
 #define DEVICE_BOARD "unknown"
 #endif
 
-void device_info(void);
+//void device_info(void);
 
+
+/*
 struct info_t
 {
 
@@ -22,3 +24,15 @@ struct info_t
     uint8_t revision;
 	
 };
+*/
+
+typedef struct 
+{
+	uint32_t manufacturer;
+	uint32_t part;
+    uint32_t revision;
+	const char *board_type; //тип платы
+	char board_id[17]; //серийный номер платы	
+} device_info_t;
+
+void device_get_info(device_info_t *info);
