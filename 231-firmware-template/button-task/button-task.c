@@ -1,4 +1,5 @@
-#include "button-task/button-task.h"
+#include "button-task.h"
+#include "led-task/led-task.h"
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 
@@ -68,6 +69,7 @@ void button_task_handle(void)
 				{
 					button_state = BUTTON_STATE_PRESSED;
 					presses++;
+					led_task_next_state();
 				}
 				else 
 					button_state = BUTTON_STATE_RELEASED;
@@ -97,11 +99,6 @@ void button_task_handle(void)
 		}
 		
     }
-}
-
-void led_task_next_state(void)
-{
-	
 }
 
 
