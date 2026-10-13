@@ -3,6 +3,7 @@
 #include "profiling.h"
 #include "pico/stdlib.h"
 #include "led-task/led-task.h"
+#include "button-task/button-task.h"
 #include <string.h>
 #include <errno.h>
 #include <ctype.h>
@@ -17,6 +18,7 @@ static void cmd_led_enable(const command_t *command);
 static void cmd_led_disable(const command_t *command);
 static void cmd_led_blink(const command_t *command);
 static void cmd_led_period(const command_t *command);
+static void cmd_button(const command_t *command);
 
 static bool parse_u32(const char *text, uint32_t *value);
 double calc_pi(uint terms);
@@ -36,6 +38,7 @@ const api_command_t api_commands[] = {
 	{ "led_disable", "led_disable", cmd_led_disable },
 	{ "led_blink", "led_blink", cmd_led_blink },
 	{ "led_period", "led_period <period_ms>", cmd_led_period },
+	{ "button", "button", cmd_button },
 };
 
 const uint api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
@@ -125,6 +128,17 @@ static void cmd_led_period(const command_t *command)
     // ответ: состояние и период светодиода
 	print_led_state();
 }
+
+void cmd_button(const command_t *command)
+{
+	if (button_task_is_pressed())
+		printf("button: pressed, presses %llu\n", button_task_get_press_count());
+	else
+		printf("button: released, presses %llu\n", button_task_get_press_count());
+	
+	return;
+}
+
 
 void api_handle(const command_t *command)
 {	
