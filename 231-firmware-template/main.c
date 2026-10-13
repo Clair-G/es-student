@@ -3,6 +3,7 @@
 
 #include "led-task/led-task.h"
 #include "button-task/button-task.h"
+#include "pi-task/pi-task.h"
 #include "log.h"
 #include "device.h"
 #include "profiling.h"
@@ -29,6 +30,7 @@ int main()
 	stdio_text_protocol_init();
 	led_task_init();
 	button_task_init();
+	pi_task_init();
 
 	
     while (1)
@@ -36,6 +38,7 @@ int main()
         profiling_iteration();
 		led_task_handle();
 		button_task_handle();
+		pi_task_handle();
 	    
 		//read_line();
 		
