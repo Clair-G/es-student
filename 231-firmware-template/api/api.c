@@ -12,8 +12,8 @@
 
 static void cmd_info(const command_t *command);
 static void cmd_uptime(const command_t *command);
-static void cmd_main_time_exec(const command_t *command);
-static void cmd_main_time_reset(const command_t *command);
+static void cmd_profiling(const command_t *command);
+static void cmd_profiling_reset(const command_t *command);
 static void cmd_led_enable(const command_t *command);
 static void cmd_led_disable(const command_t *command);
 static void cmd_led_blink(const command_t *command);
@@ -33,8 +33,6 @@ volatile double pi_result;
 const api_command_t api_commands[] = {
     { "info", "device passport", cmd_info },
 	{ "uptime", "time since reset", cmd_uptime },
-	{ "main_time_exec", "superloop iteration: average and maximum", cmd_main_time_exec },
-	{ "main_time_reset", "reset maximum iteration", cmd_main_time_reset },
 	{ "led_enable", "led_enable", cmd_led_enable },
 	{ "led_disable", "led_disable", cmd_led_disable },
 	{ "led_blink", "led_blink", cmd_led_blink },
@@ -42,6 +40,8 @@ const api_command_t api_commands[] = {
 	{ "button", "button", cmd_button },
 	{ "pi_start", "calculate pi: pi_start [<terms>]", cmd_pi_start },
 	{ "pi", "returns pi: pi", cmd_pi },
+	{ "profiling", "stopwatches", cmd_profiling },
+	{ "profiling_reset", "reset stopwatches", cmd_profiling_reset },
 };
 
 const uint api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
@@ -75,7 +75,7 @@ void cmd_pi_start(const command_t *command)
 	
     if (command->argc > 1 || !parse_u32(command->argv[0], &terms))
     {
-        printf("error: usage calc_pi [terms]\n");
+        printf("error: usage pi_start [terms]\n");
         return;
     }
 	if (!terms)
@@ -110,15 +110,22 @@ void cmd_pi(const command_t *command)
    
 }
 
-void cmd_main_time_exec(const command_t *command)
+void cmd_profiling(const command_t *command)
 {
-	printf("iteration avg %.2f us, max %u us\n", profiling_avg_us(), (unsigned)profiling_max_us());
+	uint32_t id = 0;
+	profiling_result_t result;
+	while (profiling_get(id, &result))
+	{	
+		printf("%10s count %10llu mean %.2f us max %lu us\n", 
+				result.name, result.counts, result.mean, result.max);
+		id++;
+	}
 }
 
-void cmd_main_time_reset(const command_t *command)
+void cmd_profiling_reset(const command_t *command)
 {
-	profiling_reset_max();
-	printf("max reset\n");
+	profiling_reset();
+	printf("profiling reset\n");
 }
 
 void cmd_led_enable(const command_t *command)

@@ -2,8 +2,20 @@
 
 #include "pico/types.h"
 
-void profiling_init(void);
-void profiling_iteration(void);
-float profiling_avg_us(void);
-uint32_t profiling_max_us(void);
-void profiling_reset_max(void);
+#define STOPWATCH_MAX_NUM 5 
+
+void profiling_stopwatch_init(uint32_t id, const char *name);
+
+void profiling_start(uint32_t id);
+void profiling_stop(uint32_t id);
+
+typedef struct {
+	uint64_t counts;
+	float mean;
+	uint32_t max;
+	const char *name;
+} profiling_result_t;
+
+// false — секундомер с таким номером не заведён
+bool profiling_get(uint32_t id, profiling_result_t *result);
+void profiling_reset(void);
