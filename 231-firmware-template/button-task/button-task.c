@@ -1,5 +1,7 @@
 #include "button-task.h"
 #include "led-task/led-task.h"
+#include "systime/systime.h"
+
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
 
@@ -24,10 +26,10 @@ void button_task_init(void)
     gpio_pull_up(BUTTON_PIN);
 	button_state = BUTTON_STATE_RELEASED;
 }
-
+/*
 static bool period_elapsed(uint64_t *last_us, uint64_t period_us)
 {
-    uint64_t now_us = time_us_64();
+    uint64_t now_us = systime_us_64();
 
     if (now_us - *last_us <= period_us) 
 	{
@@ -44,7 +46,7 @@ static bool period_elapsed(uint64_t *last_us, uint64_t period_us)
 
     return true;
 }
-
+*/
 
 void button_task_handle(void)
 {
@@ -52,7 +54,7 @@ void button_task_handle(void)
     // читаем часы
 	
 	bool pin_state = gpio_get(BUTTON_PIN); 
-	uint64_t now_us = time_us_64();
+	uint64_t now_us = systime_us();
 	
     switch (button_state)
     {
@@ -70,7 +72,7 @@ void button_task_handle(void)
 		}
 		case BUTTON_STATE_PRESSING:
 		{
-			if (period_elapsed(&last_pressed_us, DEBOUNCE_US))
+			if (systime_period_elapsed(&last_pressed_us, DEBOUNCE_US))
 			{
 				if (!pin_state)
 				{
@@ -95,7 +97,7 @@ void button_task_handle(void)
 		}
 		case BUTTON_STATE_RELEASING:
 		{
-			if (period_elapsed(&last_pressed_us, DEBOUNCE_US))
+			if (systime_period_elapsed(&last_pressed_us, DEBOUNCE_US))
 			{
 				if (pin_state)
 					button_state = BUTTON_STATE_PRESSED;

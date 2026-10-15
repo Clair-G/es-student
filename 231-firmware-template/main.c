@@ -1,16 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "pico/stdlib.h"
+
+#include "logging/log.h"
+#include "device/device.h"
+#include "profiling/profiling.h"
+#include "stdio-text-protocol/stdio-text-protocol.h"
+
 #include "led-task/led-task.h"
 #include "button-task/button-task.h"
 #include "pi-task/pi-task.h"
-#include "log.h"
-#include "device.h"
-#include "profiling.h"
-#include "stdio-text-protocol.h"
+
 #include "api.h"
 
-#include "pico/stdlib.h"
+#include "firmware.h"
+
+
 
 #define LINE_SIZE 32
 
@@ -46,7 +52,7 @@ int main()
 	profiling_stopwatch_init(STOPWATCH_PI, "pi");
 					
 	
-	LOG_INF("%s %s\n", DEVICE_NAME, FIRMWARE_VERSION);
+	LOG_INF("%s %s\n", FIRMWARE_NAME, FIRMWARE_VERSION);
 	
     while (1)
     {

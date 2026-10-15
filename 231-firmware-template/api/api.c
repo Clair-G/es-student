@@ -1,14 +1,23 @@
-#include "api.h"
-#include "device.h"
-#include "profiling.h"
-#include "pico/stdlib.h"
-#include "led-task/led-task.h"
-#include "button-task/button-task.h"
-#include "pi-task/pi-task.h"
+#include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <errno.h>
 #include <ctype.h>
-#include <stdlib.h>
+
+#include "pico/stdlib.h"
+
+#include "profiling/profiling.h"
+#include "systime/systime.h"
+#include "device/device.h"
+#include "logging/log.h"
+
+#include "led-task/led-task.h"
+#include "button-task/button-task.h"
+#include "pi-task/pi-task.h"
+
+#include "firmware.h"
+#include "api.h"
+
 
 static void cmd_info(const command_t *command);
 static void cmd_uptime(const command_t *command);
@@ -52,11 +61,11 @@ void cmd_info(const command_t *command)
     device_info_t info;
 	device_get_info(&info);
 	// печатаем паспорт устройства
-	printf("name: %s\n", DEVICE_NAME);
+	printf("name: %s\n", FIRMWARE_NAME);
 	printf("version: %s\n", FIRMWARE_VERSION);
 	// печатаем пять строк паспорта
-	printf("project: %s\n", DEVICE_PROJECT);
-    printf("repo: %s\n", DEVICE_REPO);
+	printf("project: %s\n", FIRMWARE_PROJECT);
+    printf("repo: %s\n", FIRMWARE_REPO);
     printf("board: %s\n", info.board_type);//!
     printf("serial: %s\n", info.board_id);
     printf("chip: manufacturer 0x%03lx, part 0x%04lx, revision %lu\n", info.manufacturer, info.part, info.revision);
@@ -65,7 +74,7 @@ void cmd_info(const command_t *command)
 
 void cmd_uptime(const command_t *command)
 {
-	uint64_t uptime = time_us_64() / 1000;
+	uint64_t uptime = systime_ms();
 	printf("uptime: %llu ms\n", uptime);
 }	
 	

@@ -1,5 +1,7 @@
 #include "pi-task.h"
 
+#include "systime/systime.h"
+
 #include "pico/stdlib.h"
 
 #define PI_TERMS_PER_CALL 100
@@ -38,7 +40,7 @@ bool pi_task_start(uint32_t n)
 			pi_sign = 1.0;
 			pi_duration = 1; //признак "работает"
 			pi_state = PI_STATE_RUNNING;
-			start_time = time_us_64();
+			start_time = systime_us();
 			return true;
 		}
 	}
@@ -70,7 +72,7 @@ void pi_task_handle(void)
 			if (pi_k == pi_n) 
 			{
 				pi_result = 4.0 * pi_sum;
-				pi_duration =  (uint32_t)((time_us_64() - start_time) / 1000);
+				pi_duration =  (uint32_t)((systime_us() - start_time) / 1000);
 				pi_state = PI_STATE_READY;
 				
 			}

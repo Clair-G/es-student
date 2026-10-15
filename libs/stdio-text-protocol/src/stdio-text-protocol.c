@@ -1,7 +1,8 @@
-#include "stdio-text-protocol.h"
+#include "stdio-text-protocol/stdio-text-protocol.h"
 #include <stdio.h>
 #include <string.h>
 #include "pico/stdlib.h"
+#include "logging/log.h"
 
 static command_t command;
 
