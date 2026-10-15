@@ -1,6 +1,6 @@
 #include  "pico/stdlib.h"
 #include "profiling/profiling.h"
-
+#include "pico/types.h"
 
 typedef struct {
 	uint32_t counts;

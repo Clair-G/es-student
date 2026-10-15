@@ -121,6 +121,7 @@ void cmd_pi(const command_t *command)
 
 void cmd_profiling(const command_t *command)
 {
+	#if PROFILING_ENABLED
 	uint32_t id = 0;
 	profiling_result_t result;
 	while (profiling_get(id, &result))
@@ -129,6 +130,10 @@ void cmd_profiling(const command_t *command)
 				result.name, result.counts, result.mean, result.max);
 		id++;
 	}
+	#else
+	// профилирование выключено: вызовы ничего не делают
+	printf("profiling is disabled in this build\n");
+	#endif
 }
 
 void cmd_profiling_reset(const command_t *command)

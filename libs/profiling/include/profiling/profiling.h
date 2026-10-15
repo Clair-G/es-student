@@ -1,6 +1,6 @@
 #pragma once
 
-#include "pico/types.h"
+//
 
 // по умолчанию профилирование включено
 #ifndef PROFILING_ENABLED
