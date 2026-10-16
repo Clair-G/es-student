@@ -71,7 +71,7 @@ static bool parse_u32(const char *text, uint32_t *value)
 }
 
 
-void print_led_state(void)
+static void print_led_state(void)
 {
 	led_state_t led_state = led_task_get_state();
 	switch (led_state)
