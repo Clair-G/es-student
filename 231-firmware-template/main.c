@@ -1,24 +1,23 @@
+#include "firmware.h"
+
 #include <stdio.h>
 #include <string.h>
 
-#include "pico/stdlib.h"
+//#include "pico/stdlib.h"
 
 #include "logging/log.h"
 #include "device/device.h"
 #include "profiling/profiling.h"
 #include "stdio-text-protocol/stdio-text-protocol.h"
 
+#include "platform/platform.h"
 #include "led-task/led-task.h"
 #include "button-task/button-task.h"
 #include "pi-task/pi-task.h"
-
-#include "api.h"
-
-#include "firmware.h"
+#include "api/api.h"
 
 
-
-#define LINE_SIZE 32
+//#define LINE_SIZE 32
 
 
 // прикидка: за член ряда 4 операции с double, 175 + 110 + 190 + 110 = 585 тактов;
@@ -39,10 +38,12 @@ typedef enum {
 
 int main()
 {
-	stdio_init_all();
+//	stdio_init_all();
+	platform_init();
+
 	stdio_text_protocol_init();
 	led_task_init();
-	button_task_init();
+	button_task_init(led_task_next_state);
 	pi_task_init();
 	
 	profiling_stopwatch_init(STOPWATCH_LOOP, "loop");

@@ -62,4 +62,5 @@ void device_get_info(device_info_t *info)
 	
 	info->revision = (id & SYSINFO_CHIP_ID_REVISION_BITS>> 
 								SYSINFO_CHIP_ID_REVISION_LSB);	
+	info->SDK_version = PICO_SDK_VERSION_STRING;						
 }

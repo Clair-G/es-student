@@ -29,6 +29,7 @@ typedef struct
     uint32_t revision;
 	const char *board_type; //тип платы
 	char board_id[17]; //серийный номер платы	
+	const char *SDK_version;
 } device_info_t;
 
 void device_get_info(device_info_t *info);

@@ -1,6 +1,6 @@
 #pragma once
 
-//
+#include <stdbool.h>
 
 // по умолчанию профилирование включено
 #ifndef PROFILING_ENABLED
