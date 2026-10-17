@@ -3,7 +3,7 @@
 #include "pico/types.h"
 
 typedef struct {
-	uint32_t counts;
+	uint64_t counts;
 	uint32_t started;
 	uint32_t summ;
 	uint32_t max;
