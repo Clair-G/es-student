@@ -76,7 +76,7 @@ static void print_led_state(void)
 	{
 		case LED_STATE_OFF:
 		{
-			printf("led: false, period %lu ms\n", led_task_get_period_ms());
+			printf("led: off, period %lu ms\n", led_task_get_period_ms());
 			break;
 		}
 		case LED_STATE_ON:
@@ -171,7 +171,7 @@ static void cmd_profiling(const command_t *command)
 	profiling_result_t result;
 	while (profiling_get(id, &result))
 	{	
-		printf("%10s count %10llu mean %.2f us max %lu us\n", 
+		printf("%s count %llu mean %.2f us max %lu us\n", 
 				result.name, result.counts, result.mean, result.max);
 		id++;
 	}
