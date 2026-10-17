@@ -12,5 +12,8 @@ typedef enum {
 
 void pi_task_init(void);
 void pi_task_handle(void);
+
+// If n == 0, default PI_TERMS_DEFAULT_NUM 1000000 is used
 bool pi_task_start(uint32_t n);
 bool pi_task_get_result(double *result, uint32_t *duration);
+uint32_t pi_task_get_def_terms_num();

@@ -24,7 +24,7 @@
 // 1 000 000 членов по 585 тактов при 125 МГц — около 4,7 с
 //const uint CALC_PI_TERMS = 1000000;
 
-extern volatile double pi_result;
+//extern volatile double pi_result;
 
 typedef enum {
     STOPWATCH_LOOP,

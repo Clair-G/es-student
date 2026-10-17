@@ -3,6 +3,8 @@
 #include "systime/systime.h"
 
 #define PI_TERMS_PER_CALL 100
+#define PI_TERMS_DEFAULT_NUM 1000000
+
 
 // Состояние расчёта: должно пережить возврат из обработчика
 
@@ -19,6 +21,7 @@ static uint32_t pi_duration;
 void pi_task_init(void)
 {
 	pi_state = PI_STATE_OFF;
+	
 }
 
 bool pi_task_start(uint32_t n)
@@ -32,6 +35,8 @@ bool pi_task_start(uint32_t n)
 		case PI_STATE_READY:
 		case PI_STATE_OFF:
 		{
+			if (n == 0) 
+				n = PI_TERMS_DEFAULT_NUM;
 			pi_n = n;
 			pi_k = 0;
 			pi_sum = 0.0;
@@ -101,4 +106,9 @@ bool pi_task_get_result(double *result, uint32_t *duration)
 		}
 	}
 	return false;
+}
+
+uint32_t pi_task_get_def_terms_num()
+{
+	return PI_TERMS_DEFAULT_NUM;
 }

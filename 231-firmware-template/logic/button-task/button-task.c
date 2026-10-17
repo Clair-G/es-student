@@ -2,6 +2,7 @@
 
 
 #include "systime/systime.h"
+#include "logging/log.h"
 
 #include "platform/platform.h"
 
@@ -25,8 +26,14 @@ static button_task_callback_t on_presse_cb;
 
 void button_task_init(button_task_callback_t on_press)
 {
-	on_presse_cb = on_press;
 	button_state = BUTTON_STATE_RELEASED;
+	if (!on_press)
+	{
+		LOG_ERR("button_task_callback NULL pointer\n");
+		return;
+	}
+	on_presse_cb = on_press;
+	
 }
 
 void button_task_handle(void)

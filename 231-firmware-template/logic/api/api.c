@@ -10,7 +10,7 @@
 void api_handle(const command_t *command)
 {	
 	if (command->truncated)
-		LOG_ERR("error: command longer than 63 characters or 4 arguments\n");		
+		printf("error: command longer than 63 characters or 4 arguments\n");		
 	else 
 	if (strcmp(command->name, "help") == 0)
 	{	

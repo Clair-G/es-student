@@ -8,6 +8,7 @@
 #define LINE_SIZE 32
 
 static command_t command;
+static uint is_command_found = 0;
 
 char line [STDIO_TEXT_PROTOCOL_LINE_SIZE];
 uint line_length;
@@ -45,15 +46,17 @@ const command_t *stdio_text_protocol_handle(void)
         if (command.truncated == false)
 			parse_command();
 		line_length = 0;
-		return &command;
+		if (is_command_found)
+			return &command;
     }
     
 	// Backspace (0x08 или 0x7f): убираем последний символ и стираем его на экране "\b \b"
 	if (symbol == 0x08 || symbol == 0x7f)
 	{
 		if (line_length)
-			line_length = line_length - 1;
-		printf("\b \b");
+		{	line_length = line_length - 1;
+			printf("\b \b");
+		}
 		
 	}
     
@@ -82,44 +85,47 @@ void parse_command(void)
 {	
 	command.name = '\0';
 	command.argc = 0;
+	is_command_found = 0;
 	
 	for (int i = 0; i < line_length; i++)
+	{
+		if (line[i] == ' ') //change separator
+		{	
+			line[i] = '\0';
+		} 
+		else
 		{
-			if (line[i] == ' ') //change separator
-			{	
-				line[i] = '\0';
-			} 
-			else
+			if (line[i] != '\0') //normal symbol
 			{
-				if (line[i] != '\0') //normal symbol
+				if (is_command_found) //arg found
 				{
-					if (i) //not the first
+					if (line[i-1] == '\0')
 					{
-						if (line[i-1] == '\0')
-						{
-							command.argv[command.argc]=&line[i];
-							command.argc++;
-						}
-					}						
-					else // FIRST
-					{
-						command.name=&line[i];
-						command.argc = 0;
+						command.argv[command.argc]=&line[i];
+						command.argc++;
 					}
+				}						
+				else //command found
+				{
+					command.name=&line[i];
+					command.argc = 0;
+					is_command_found = 1;
 				}
 			}
-			
-			if (command.argc > 5) 
-			{ 	
-				command.truncated = true;
-				command.argc--;
-				break;
-			}
 		}
+					
+		if (command.argc > 5) 
+		{ 	
+			command.truncated = true;
+			command.argc--;
+			break;
+		}
+	}
 /*	
 	LOG_DBG("out of the cycle, command.argc= %u\n", command.argc);
 	for (int i = 0; i < command.argc; i++)
 	LOG_DBG("%u, %s\n", i, command.argv[i]);
 */
+
 	return;
 }

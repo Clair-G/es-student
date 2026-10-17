@@ -15,8 +15,6 @@
 #include <errno.h>
 #include <ctype.h>
 
-const uint CALC_PI_TERMS = 1000000; //!
-
 static void cmd_info(const command_t *command);
 static void cmd_uptime(const command_t *command);
 static void cmd_profiling(const command_t *command);
@@ -122,18 +120,24 @@ static void cmd_uptime(const command_t *command)
 static void cmd_pi_start(const command_t *command)
 {
 	uint32_t terms;
+	if (command->argc == 0)
+	{
+		terms = pi_task_get_def_terms_num();
+	}
+	else
+	{		
+		if (command->argc > 1 || !parse_u32(command->argv[0], &terms))
+		{
+			printf("error: usage pi_start [terms]\n");
+			return;
+		}
+		if (!terms)
+		{
+			printf("error: terms must be greater than 0\n");
+			return;
+		}
+	}	 
 	
-    if (command->argc > 1 || !parse_u32(command->argv[0], &terms))
-    {
-        printf("error: usage pi_start [terms]\n");
-        return;
-    }
-	if (!terms)
-    {
-        printf("error: terms must be greater than 0\n");
-        return;
-    }
-		
 	if (pi_task_start(terms))
 		printf("pi: started, %ld terms\n", terms);
 	else 
