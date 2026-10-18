@@ -25,4 +25,7 @@ void led_task_next_state(void);
 
 void led_task_set_next_period();
 
+void led_task_blink(void);
+
+
 

@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <string.h>
 
-//#include "pico/stdlib.h"
 
 #include "logging/log.h"
 #include "device/device.h"
@@ -16,15 +15,6 @@
 #include "pi-task/pi-task.h"
 #include "api/api.h"
 
-
-//#define LINE_SIZE 32
-
-
-// прикидка: за член ряда 4 операции с double, 175 + 110 + 190 + 110 = 585 тактов;
-// 1 000 000 членов по 585 тактов при 125 МГц — около 4,7 с
-//const uint CALC_PI_TERMS = 1000000;
-
-//extern volatile double pi_result;
 
 typedef enum {
     STOPWATCH_LOOP,
@@ -50,8 +40,8 @@ int main()
 	stdio_text_protocol_init();
 	led_task_init();
 	
-	button_task_init(BUTTON_STATE, led_task_next_state);
-	button_task_init(BUTTON_PERIOD, led_task_set_next_period);
+	button_task_init(BUTTON_STATE, led_task_next_state, led_task_blink);
+	button_task_init(BUTTON_PERIOD, led_task_set_next_period, NULL);
 	
 	pi_task_init();
 	
