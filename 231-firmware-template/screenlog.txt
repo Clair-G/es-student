@@ -1,0 +1,473 @@
+PS C:\Git_Reps\pico\es-student\231-firmware-template\build> cmake -G "Unix Makefiles" ..
+Using PICO_SDK_PATH from environment ('C:\Git_Reps\pico\pico-sdk')
+PICO_SDK_PATH is C:/Git_Reps/pico/pico-sdk
+Target board (PICO_BOARD) is 'pico'.
+Using board configuration from C:/Git_Reps/pico/pico-sdk/src/boards/include/boards/pico.h
+Pico Platform (PICO_PLATFORM) is 'rp2040'.
+-- Defaulting build type to 'Release' since not specified.
+Defaulting compiler (PICO_COMPILER) to 'pico_arm_cortex_m0plus_gcc' since not specified or detected.
+Configuring toolchain based on PICO_COMPILER 'pico_arm_cortex_m0plus_gcc'
+Defaulting PICO_GCC_TRIPLE to 'arm-none-eabi'
+-- The C compiler identification is GNU 10.3.1
+-- The CXX compiler identification is GNU 10.3.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The ASM compiler identification is GNU
+-- Found assembler: C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-gcc.exe
+Build type is Release
+-- Found Python3: C:/Users/Clair/AppData/Local/Programs/Python/Python314/python.exe (found version "3.14.7") found components: Interpreter
+-- Detected emulated TLS (__emutls_get_address)
+TinyUSB available at C:/Git_Reps/pico/pico-sdk/lib/tinyusb/hw/bsp/rp2040; enabling build support for USB.
+BTstack available at C:/Git_Reps/pico/pico-sdk/lib/btstack
+cyw43-driver available at C:/Git_Reps/pico/pico-sdk/lib/cyw43-driver
+mbedtls available at C:/Git_Reps/pico/pico-sdk/lib/mbedtls
+lwIP available at C:/Git_Reps/pico/pico-sdk/lib/lwip
+C library type is newlib
+Using picotool from C:/Program Files/picotool-2.3.0-x64-win/picotool/picotool.exe
+-- Configuring done (12.3s)
+-- Generating done (3.4s)
+-- Build files have been written to: C:/Git_Reps/pico/es-student/231-firmware-template/build
+PS C:\Git_Reps\pico\es-student\231-firmware-template\build> make
+[  0%] Building ASM object pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.obj
+[  0%] Linking ASM executable bs2_default.elf
+[  0%] Built target bs2_default
+[  0%] Generating bs2_default.bin
+[  1%] Generating bs2_default_padded_checksummed.S
+[  1%] Building ASM object pico-sdk/src/rp2040/boot_stage2/CMakeFiles/bs2_default_library.dir/bs2_default_padded_checksummed.S.obj
+[  1%] Built target bs2_default_library
+[  1%] Building C object CMakeFiles/platform.dir/platform/platform.c.obj
+[  1%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[  1%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[  2%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2040/pico_platform/platform.c.obj
+[  2%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_common/common.c.obj
+[  2%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[  2%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/custom_panic_function.S.obj
+[  2%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/hardware_claim/claim.c.obj
+[  3%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[  3%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[  3%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[  3%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[  4%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/sem.c.obj
+[  4%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[  4%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+[  4%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[  5%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/time.c.obj
+[  5%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[  5%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[  5%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/datetime.c.obj
+[  5%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/fixed_bitset.c.obj
+[  6%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+[  6%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/queue.c.obj
+[  6%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[  6%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[  7%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[  7%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[  7%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[  7%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[  8%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[  8%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[  8%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[  8%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.obj
+[  8%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[  9%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+[  9%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[  9%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[  9%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 10%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 10%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+[ 10%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 10%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.obj
+[ 11%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.obj
+[ 11%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.obj
+[ 11%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 11%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.obj
+[ 11%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+[ 12%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.obj
+[ 12%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.obj
+[ 12%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 12%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.obj
+[ 13%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 13%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+[ 13%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 13%] Building CXX object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 14%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 14%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 14%] Building ASM object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 14%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 14%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/cxa_guard.c.obj
+[ 15%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 15%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+[ 15%] Building C object CMakeFiles/platform.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_thread_local/thread_local.c.obj
+[ 15%] Linking CXX static library libplatform.a
+[ 15%] Built target platform
+[ 15%] Building C object libs/logging/CMakeFiles/logging.dir/src/log.c.obj
+[ 15%] Linking C static library liblogging.a
+[ 15%] Built target logging
+[ 15%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/src/stdio-text-protocol.c.obj
+[ 16%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[ 16%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[ 16%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2040/pico_platform/platform.c.obj
+[ 16%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_common/common.c.obj
+[ 16%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[ 17%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/custom_panic_function.S.obj
+[ 17%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/hardware_claim/claim.c.obj
+[ 17%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[ 17%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[ 18%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[ 18%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[ 18%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/sem.c.obj
+[ 18%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[ 19%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+[ 19%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[ 19%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/time.c.obj
+[ 19%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[ 19%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[ 20%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/datetime.c.obj
+[ 20%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/fixed_bitset.c.obj
+[ 20%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+[ 20%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/queue.c.obj
+[ 21%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[ 21%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[ 21%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[ 21%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[ 22%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[ 22%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[ 22%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[ 22%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[ 22%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[ 23%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.obj
+[ 23%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[ 23%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+[ 23%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[ 24%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[ 24%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 24%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 24%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+[ 25%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 25%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.obj
+[ 25%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.obj
+[ 25%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.obj
+[ 25%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 26%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.obj
+[ 26%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+[ 26%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.obj
+[ 26%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.obj
+[ 27%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 27%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.obj
+[ 27%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 27%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+[ 27%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 28%] Building CXX object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 28%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 28%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 28%] Building ASM object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 29%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 29%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/cxa_guard.c.obj
+[ 29%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 29%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+[ 30%] Building C object libs/stdio-text-protocol/CMakeFiles/stdio-text-protocol.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_thread_local/thread_local.c.obj
+[ 30%] Linking CXX static library libstdio-text-protocol.a
+[ 30%] Built target stdio-text-protocol
+[ 31%] Building C object libs/device/CMakeFiles/device.dir/src/device.c.obj
+[ 31%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[ 31%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[ 31%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2040/pico_platform/platform.c.obj
+[ 31%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_common/common.c.obj
+[ 32%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[ 32%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/custom_panic_function.S.obj
+[ 32%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/hardware_claim/claim.c.obj
+[ 32%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[ 33%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[ 33%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[ 33%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[ 33%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/sem.c.obj
+[ 34%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[ 34%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+[ 34%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[ 34%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/time.c.obj
+[ 34%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[ 35%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[ 35%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/datetime.c.obj
+[ 35%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/fixed_bitset.c.obj
+[ 35%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+[ 36%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/queue.c.obj
+[ 36%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[ 36%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[ 36%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[ 37%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[ 37%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[ 37%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[ 37%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[ 37%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[ 38%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[ 38%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.obj
+[ 38%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[ 38%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+[ 39%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[ 39%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[ 39%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 39%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 40%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+[ 40%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 40%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.obj
+[ 40%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.obj
+[ 40%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.obj
+[ 41%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 41%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.obj
+[ 41%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+[ 41%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.obj
+[ 42%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.obj
+[ 42%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 42%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.obj
+[ 42%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 43%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+[ 43%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 43%] Building CXX object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 43%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 43%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 44%] Building ASM object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 44%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 44%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/cxa_guard.c.obj
+[ 44%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 45%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+[ 45%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_thread_local/thread_local.c.obj
+[ 45%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+[ 45%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+[ 46%] Building C object libs/device/CMakeFiles/device.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.obj
+[ 46%] Linking CXX static library libdevice.a
+[ 46%] Built target device
+[ 46%] Building C object libs/systime/CMakeFiles/systime.dir/src/systime.c.obj
+[ 46%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[ 46%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[ 47%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2040/pico_platform/platform.c.obj
+[ 47%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_common/common.c.obj
+[ 47%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[ 47%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/custom_panic_function.S.obj
+[ 48%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/hardware_claim/claim.c.obj
+[ 48%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[ 48%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[ 48%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[ 50%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[ 50%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/sem.c.obj
+[ 50%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[ 50%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+[ 50%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[ 51%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/time.c.obj
+[ 51%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[ 51%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[ 51%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/datetime.c.obj
+[ 52%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/fixed_bitset.c.obj
+[ 52%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+[ 52%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/queue.c.obj
+[ 52%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[ 53%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[ 53%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[ 53%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[ 53%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[ 53%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[ 54%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[ 54%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[ 54%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[ 54%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.obj
+[ 55%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[ 55%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+[ 55%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[ 55%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[ 56%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 56%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 56%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+[ 56%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 56%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.obj
+[ 57%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.obj
+[ 57%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.obj
+[ 57%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 57%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.obj
+[ 58%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+[ 58%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.obj
+[ 58%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.obj
+[ 58%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 59%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.obj
+[ 59%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 59%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+[ 59%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 59%] Building CXX object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 60%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 60%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 60%] Building ASM object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 60%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 61%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/cxa_guard.c.obj
+[ 61%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 61%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+[ 61%] Building C object libs/systime/CMakeFiles/systime.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_thread_local/thread_local.c.obj
+[ 62%] Linking CXX static library libsystime.a
+[ 62%] Built target systime
+[ 63%] Building C object libs/profiling/CMakeFiles/profiling.dir/src/profiling.c.obj
+[ 63%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[ 63%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[ 63%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2040/pico_platform/platform.c.obj
+[ 64%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_common/common.c.obj
+[ 64%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[ 64%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/custom_panic_function.S.obj
+[ 64%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/hardware_claim/claim.c.obj
+[ 64%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[ 65%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[ 65%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[ 65%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[ 65%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/sem.c.obj
+[ 66%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[ 66%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+[ 66%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[ 66%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/time.c.obj
+[ 67%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[ 67%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[ 67%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/datetime.c.obj
+[ 67%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/fixed_bitset.c.obj
+[ 67%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+[ 68%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/queue.c.obj
+[ 68%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[ 68%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[ 68%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[ 69%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[ 69%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[ 69%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[ 69%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[ 69%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[ 70%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[ 70%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.obj
+[ 70%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[ 70%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+[ 71%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[ 71%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[ 71%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 71%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 72%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+[ 72%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 72%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.obj
+[ 72%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.obj
+[ 72%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.obj
+[ 73%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 73%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.obj
+[ 73%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+[ 73%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.obj
+[ 74%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.obj
+[ 74%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 74%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.obj
+[ 74%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 75%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+[ 75%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 75%] Building CXX object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 75%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 75%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 76%] Building ASM object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 76%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 76%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/cxa_guard.c.obj
+[ 76%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 77%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+[ 77%] Building C object libs/profiling/CMakeFiles/profiling.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_thread_local/thread_local.c.obj
+[ 77%] Linking CXX static library libprofiling.a
+[ 77%] Built target profiling
+[ 77%] Building C object CMakeFiles/logic.dir/logic/api/api.c.obj
+[ 78%] Building C object CMakeFiles/logic.dir/logic/api/api-callbacks.c.obj
+[ 78%] Building C object CMakeFiles/logic.dir/logic/led-task/led-task.c.obj
+[ 78%] Building C object CMakeFiles/logic.dir/logic/button-task/button-task.c.obj
+[ 78%] Building C object CMakeFiles/logic.dir/logic/pi-task/pi-task.c.obj
+[ 79%] Linking CXX static library liblogic.a
+[ 79%] Built target logic
+[ 79%] Building C object CMakeFiles/231_firmware_template.dir/main.c.obj
+[ 79%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+[ 79%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+[ 79%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2040/pico_platform/platform.c.obj
+[ 80%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_common/common.c.obj
+[ 80%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/panic.c.obj
+[ 80%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_platform_panic/custom_panic_function.S.obj
+[ 80%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/hardware_claim/claim.c.obj
+[ 81%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+[ 81%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_sync_spin_lock/sync_spin_lock.c.obj
+[ 81%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+[ 81%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+[ 81%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/sem.c.obj
+[ 82%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/lock_core.c.obj
+[ 82%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/mutex.c.obj
+[ 82%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_sync/critical_section.c.obj
+[ 82%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/time.c.obj
+[ 83%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+[ 83%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+[ 83%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/datetime.c.obj
+[ 83%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/fixed_bitset.c.obj
+[ 84%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/pheap.c.obj
+[ 84%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/common/pico_util/queue.c.obj
+[ 84%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+[ 84%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+[ 84%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+[ 85%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+[ 85%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+[ 85%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_ticks/ticks.c.obj
+[ 85%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+[ 86%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.obj
+[ 86%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_boot_lock/boot_lock.c.obj
+[ 86%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_flash/flash.c.obj
+[ 86%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+[ 87%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+[ 87%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+[ 87%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init.c.obj
+[ 87%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_clocks.c.obj
+[ 87%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_runtime_init/runtime_init_stack_guard.c.obj
+[ 88%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c.obj
+[ 88%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+[ 88%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_divider/divider_hardware.S.obj
+[ 88%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi_rp2040.S.obj
+[ 89%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom_rp2040.c.obj
+[ 89%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+[ 89%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim_rp2040.S.obj
+[ 89%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+[ 90%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi_rp2040.S.obj
+[ 90%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom_rp2040.c.obj
+[ 90%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+[ 90%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim_rp2040.S.obj
+[ 90%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_malloc/malloc.c.obj
+[ 91%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+[ 91%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_atomic/atomic.c.obj
+[ 91%] Building CXX object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj
+[ 91%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_standard_binary_info/standard_binary_info.c.obj
+[ 92%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+[ 92%] Building ASM object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_crt0/crt0.S.obj
+[ 92%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/newlib_interface.c.obj
+[ 92%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_clib_interface/cxa_guard.c.obj
+[ 93%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+[ 93%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c.obj
+[ 93%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c.obj
+[ 93%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c.obj
+[ 93%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c.obj
+[ 94%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/hardware_xip_cache/xip_cache.c.obj
+[ 94%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_usb_reset/usb_reset.c.obj
+[ 94%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c.obj
+[ 94%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c.obj
+[ 95%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/device/usbd.c.obj
+[ 95%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c.obj
+[ 95%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c.obj
+[ 95%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c.obj
+[ 96%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c.obj
+[ 96%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c.obj
+[ 96%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c.obj
+[ 96%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c.obj
+[ 96%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c.obj
+[ 97%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/net/ecm_rndis_device.c.obj
+[ 97%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/net/ncm_device.c.obj
+[ 97%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c.obj
+[ 97%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c.obj
+[ 98%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/class/video/video_device.c.obj
+[ 98%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/tusb.c.obj
+[ 98%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c.obj
+[ 98%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c.obj
+[100%] Building C object CMakeFiles/231_firmware_template.dir/C_/Git_Reps/pico/pico-sdk/src/rp2_common/pico_thread_local/thread_local.c.obj
+[100%] Linking CXX executable 231_firmware_template.elf
+[100%] Built target 231_firmware_template
+PS C:\Git_Reps\pico\es-student\231-firmware-template\build>
