@@ -42,7 +42,7 @@ const api_command_t api_commands[] = {
 	{ "profiling_reset", "reset stopwatches", cmd_profiling_reset },
 };
 
-const uint api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
+const uint32_t api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
 
 // Число без знака из десятичной записи. false — в записи не только цифры
 // или число не помещается в uint32_t.

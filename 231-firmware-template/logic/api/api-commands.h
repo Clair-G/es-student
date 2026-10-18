@@ -21,4 +21,4 @@ extern const api_command_t api_commands[];
 
 //void api_handle(const command_t *command);
 
-extern const uint api_command_count;
+extern const uint32_t api_command_count;
