@@ -228,11 +228,20 @@ static void cmd_led_period(const command_t *command)
 
 static void cmd_button(const command_t *command)
 {
-	if (button_task_is_pressed())
-		printf("button: pressed, presses %llu\n", button_task_get_press_count());
-	else
-		printf("button: released, presses %llu\n", button_task_get_press_count());
+	uint32_t id = 0;
 	
+	button_info_t info;
+	while (button_task_get_info(id, &info))
+	{	
+		char *state; //max string length
+		if (info.state) state = "pressed";
+		else state = "released";
+		
+		printf("button %lu: %s, presses %llu\n", 
+				(id + 1), state, info.presses);
+		id++;
+	}
+
 	return;
 }
 

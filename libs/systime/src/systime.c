@@ -2,7 +2,7 @@
 
 #include "systime/systime.h"
 
-bool systime_period_elapsed(uint64_t *last_us, uint64_t period_us)
+bool systime_perio_elapsed(uint64_t *last_us, uint64_t period_us)
 {
     uint64_t now_us = time_us_64();
 

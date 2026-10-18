@@ -9,21 +9,18 @@ static const uint PERIOD_BUTTON_PIN = 14;
 const platform_button_t buttons[] = {
     { STATE_BUTTON_PIN },
 	{ PERIOD_BUTTON_PIN },
-}
+};
 
-const uint buttons_count = sizeof(buttons) / sizeof(buttons[0]);
+const uint32_t buttons_count = sizeof(buttons) / sizeof(buttons[0]);
 
 static void buttons_init(void)
 {
-	buttons[0].id = 0;
-	buttons[0].
-	gpio_init(STATE_BUTTON_PIN);
-    gpio_set_dir(STATE_BUTTON_PIN, GPIO_IN);
-    gpio_pull_up(STATE_BUTTON_PIN);
-	
-	gpio_init(PERIOD_BUTTON_PIN);
-    gpio_set_dir(PERIOD_BUTTON_PIN, GPIO_IN);
-    gpio_pull_up(PERIOD_BUTTON_PIN);
+	for (int button_id = 0; button_id < buttons_count; button_id++)
+	{
+		gpio_init(buttons[button_id].pin);
+		gpio_set_dir(buttons[button_id].pin, GPIO_IN);
+		gpio_pull_up(buttons[button_id].pin);
+	}
 }
 
 static void led_init(void)
@@ -38,7 +35,7 @@ static void led_init(void)
 void platform_init(void)
 {
 	stdio_init_all();
-	button_init();
+	buttons_init();
 	led_init();
 	
 }
@@ -59,8 +56,9 @@ bool platform_led_get(void)
 // нажата ли кнопка сейчас, без подавления дребезга
 bool platform_button_read(uint32_t button_id) //
 {
-	if (!gpio_get(STATE_BUTTON_PIN)) 
+	if (!gpio_get(buttons[button_id].pin)) 
 		return true;
-	else 
-		return false;
+	
+	return false;
 }
+

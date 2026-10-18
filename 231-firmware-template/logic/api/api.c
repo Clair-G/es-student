@@ -7,7 +7,6 @@
 #include <string.h>
 #include "logging/log.h"
 
-
 void api_handle(const command_t *command)
 {	
 	if (command->truncated)

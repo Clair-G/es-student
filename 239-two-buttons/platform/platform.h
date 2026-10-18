@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stdint.h>
 
 #define BUTTONS_MAX_NUM 2
 
@@ -11,10 +12,10 @@ void platform_led_set(bool on);
 bool platform_led_get(void);
 
 // нажата ли кнопка сейчас, без подавления дребезга
-bool platform_button_read(void);
+bool platform_button_read(uint32_t button_id);
 
-buttons_count 
 typedef struct {
-	uint32_t id;
 	uint32_t pin;	
 } platform_button_t;
+
+//extern const uint32_t buttons_count;

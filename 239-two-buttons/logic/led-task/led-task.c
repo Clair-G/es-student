@@ -38,25 +38,29 @@ bool led_task_set_period_ms(uint32_t period_ms)
     return true;
 }
 
-void led_task_set_next_period() //TODO
+void led_task_set_next_period()
 {
    switch (led_period)
 	{
 		case LED_PERIOD_250:
 		{
 			led_task_set_period_ms(500);
+			led_period = LED_PERIOD_500;
 			break;
 		}
-		case LED_PERIOD_250:
+		case LED_PERIOD_500:
 		{
 			led_task_set_period_ms(1000);
+			led_period = LED_PERIOD_1000;
 			break;
 		}
 		case LED_PERIOD_1000:
 		{
 			led_task_set_period_ms(250);
+			led_period = LED_PERIOD_250;
 			break;
 		}
+	}
 }
 
 void led_task_set_state(led_state_t state)

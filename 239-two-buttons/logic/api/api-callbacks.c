@@ -42,7 +42,7 @@ const api_command_t api_commands[] = {
 	{ "profiling_reset", "reset stopwatches", cmd_profiling_reset },
 };
 
-const uint api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
+const uint32_t api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
 
 // Число без знака из десятичной записи. false — в записи не только цифры
 // или число не помещается в uint32_t.
@@ -229,11 +229,16 @@ static void cmd_led_period(const command_t *command)
 static void cmd_button(const command_t *command)
 {
 	uint32_t id = 0;
+	
 	button_info_t info;
 	while (button_task_get_info(id, &info))
 	{	
-		printf("button %u: %s, presses %llu\n", 
-				(id + 1), info.state, info.presses, result.mean, result.max);
+		char *state; //max string length
+		if (info.state) state = "pressed";
+		else state = "released";
+		
+		printf("button %lu: %s, presses %llu\n", 
+				(id + 1), state, info.presses);
 		id++;
 	}
 
