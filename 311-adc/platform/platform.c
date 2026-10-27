@@ -4,15 +4,26 @@
 #include "hardware/gpio.h"
 #include "hardware/adc.h"
 
-static const uint BUTTON_PIN = 15;
-const uint ADC_PIN = 26;
-const uint ADC_AIN = 0;
+static const uint STATE_BUTTON_PIN = 15;
+#define ADC_PIN 26
+#define ADC_CHANNEL 0
 
-static void button_init(void)
+
+
+const platform_button_t buttons[] = {
+    { STATE_BUTTON_PIN },
+};
+
+const uint32_t buttons_count = sizeof(buttons) / sizeof(buttons[0]);
+
+static void buttons_init(void)
 {
-	gpio_init(BUTTON_PIN);
-    gpio_set_dir(BUTTON_PIN, GPIO_IN);
-    gpio_pull_up(BUTTON_PIN);
+	for (int button_id = 0; button_id < buttons_count; button_id++)
+	{
+		gpio_init(buttons[button_id].pin);
+		gpio_set_dir(buttons[button_id].pin, GPIO_IN);
+		gpio_pull_up(buttons[button_id].pin);
+	}
 	
 }
 
@@ -28,12 +39,10 @@ static void led_init(void)
 void platform_init(void)
 {
 	stdio_init_all();
-	button_init();
+	buttons_init();
 	led_init();
-	
 	adc_init();
 	adc_gpio_init(ADC_PIN);
-	
 	
 }
 
@@ -51,16 +60,17 @@ bool platform_led_get(void)
 }
 
 // нажата ли кнопка сейчас, без подавления дребезга
-bool platform_button_read(void)
+bool platform_button_read(uint32_t button_id) //
 {
-	if (!gpio_get(BUTTON_PIN)) 
+	if (!gpio_get(buttons[button_id].pin)) 
 		return true;
-	else 
-		return false;
+	
+	return false;
 }
 
-float platform_adc_voltage(void)
+float platform_voltage_read(void)
 {
-	adc_select_input(ADC_AIN);
-	return (float) adc_read() * 3.3 / 4096;
+	adc_select_input(ADC_CHANNEL);
+	
+	return (float)adc_read() * 3.3 / 4096;
 }

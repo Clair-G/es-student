@@ -14,6 +14,7 @@
 #include "led-task/led-task.h"
 #include "button-task/button-task.h"
 #include "pi-task/pi-task.h"
+#include "adc-task/adc-task.h"
 #include "api/api.h"
 
 
@@ -34,6 +35,12 @@ typedef enum {
 	STOPWATCH_PI,
 } stopwatch;
 
+
+typedef enum {
+    BUTTON_STATE,
+    BUTTON_PERIOD,
+} button;
+
 //-----------------
 
 int main()
@@ -43,7 +50,7 @@ int main()
 
 	stdio_text_protocol_init();
 	led_task_init();
-	button_task_init(led_task_next_state);
+	button_task_init(BUTTON_STATE, led_task_next_state, NULL);
 	pi_task_init();
 	
 	profiling_stopwatch_init(STOPWATCH_LOOP, "loop");

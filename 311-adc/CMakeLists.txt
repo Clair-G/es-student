@@ -33,7 +33,7 @@ target_include_directories(platform PUBLIC
 
 target_link_libraries(platform PRIVATE
     pico_stdlib
-    hardware_adc
+	hardware_adc
 )
 
 # логика прибора: задачи и команды, без SDK
@@ -43,6 +43,7 @@ add_library(logic STATIC
 	${CMAKE_CURRENT_SOURCE_DIR}/logic/led-task/led-task.c
 	${CMAKE_CURRENT_SOURCE_DIR}/logic/button-task/button-task.c
 	${CMAKE_CURRENT_SOURCE_DIR}/logic/pi-task/pi-task.c
+# 	${CMAKE_CURRENT_SOURCE_DIR}/logic/adc-task/adc-task.c
 )
 
 # путь к заголовкам — папка logic
@@ -53,7 +54,7 @@ target_include_directories(logic PUBLIC
 
 # stdio_text_protocol — PUBLIC, остальные библиотеки — PRIVATE
 target_link_libraries(logic PUBLIC
-    stdio-text-protocol
+    stdio-text-protocol 
 )
 
 target_link_libraries(logic PRIVATE

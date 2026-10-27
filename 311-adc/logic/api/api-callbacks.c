@@ -5,6 +5,8 @@
 #include "led-task/led-task.h"
 #include "button-task/button-task.h"
 #include "pi-task/pi-task.h"
+#include "platform/platform.h" //?????
+//#include "adc-task/adc-task.h"
 
 #include "profiling/profiling.h"
 #include "systime/systime.h"
@@ -28,7 +30,6 @@ static void cmd_pi_start(const command_t *command);
 static void cmd_pi(const command_t *command);
 static void cmd_get_voltage(const command_t *command);
 
-
 const api_command_t api_commands[] = {
     { "info", "device passport", cmd_info },
 	{ "uptime", "time since reset", cmd_uptime },
@@ -41,7 +42,7 @@ const api_command_t api_commands[] = {
 	{ "pi", "returns pi: pi", cmd_pi },
 	{ "profiling", "stopwatches", cmd_profiling },
 	{ "profiling_reset", "reset stopwatches", cmd_profiling_reset },
-	{ "get_voltage", "rmeasures voltage", cmd_get_voltage },
+	{ "get_voltage", "voltage on GP26, ADC input 0", cmd_get_voltage },
 };
 
 const uint32_t api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
@@ -249,6 +250,8 @@ static void cmd_button(const command_t *command)
 
 static void cmd_get_voltage(const command_t *command)
 {
-	float voltage = platform_read_voltage();
-	printf("voltage: %.02f\n", voltage);
+	float voltage = platform_voltage_read();
+	printf("voltage: %.03f V\n", voltage);
+	
+	return;
 }
