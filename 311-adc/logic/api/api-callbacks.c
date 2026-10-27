@@ -292,7 +292,7 @@ static void cmd_tm_start(const command_t *command)
 	{	
 		if (command->argc > 1 || !parse_u32(command->argv[0], &period_ms))
 		{
-			printf("error: tm_start [<period_ms>]\n");
+			printf("error: usage tm_start [<period_ms>]\n");
 			return;
 		}
 	}	
