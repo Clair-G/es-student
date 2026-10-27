@@ -14,7 +14,7 @@
 #include "led-task/led-task.h"
 #include "button-task/button-task.h"
 #include "pi-task/pi-task.h"
-#include "adc-task/adc-task.h"
+#include "telemetry-task/telemetry-task.h"
 #include "api/api.h"
 
 
@@ -33,6 +33,7 @@ typedef enum {
     STOPWATCH_LED,
 	STOPWATCH_BUTTON,
 	STOPWATCH_PI,
+	STOPWATCH_TELEMETRY,
 } stopwatch;
 
 
@@ -52,13 +53,14 @@ int main()
 	led_task_init();
 	button_task_init(BUTTON_STATE, led_task_next_state, NULL);
 	pi_task_init();
+	telemetry_task_init(api_print_telemetry);
 	
 	profiling_stopwatch_init(STOPWATCH_LOOP, "loop");
 	profiling_stopwatch_init(STOPWATCH_COMMAND, "command");
 	profiling_stopwatch_init(STOPWATCH_LED, "led");
 	profiling_stopwatch_init(STOPWATCH_BUTTON, "button");
 	profiling_stopwatch_init(STOPWATCH_PI, "pi");
-					
+	profiling_stopwatch_init(STOPWATCH_TELEMETRY, "telemetry");
 	
 	LOG_INF("%s %s\n", FIRMWARE_NAME, FIRMWARE_VERSION);
 	
@@ -78,7 +80,10 @@ int main()
 		pi_task_handle();
 	    profiling_stop(STOPWATCH_PI);
 		
-		
+		profiling_start(STOPWATCH_TELEMETRY);
+		telemetry_task_handle();
+		profiling_stop(STOPWATCH_TELEMETRY);
+		 
 		profiling_start(STOPWATCH_COMMAND);
 		// принятая строка становится командой, команда — действием прибора
 		const command_t *command = stdio_text_protocol_handle();

@@ -16,7 +16,7 @@ void profiling_stop(uint32_t id);
 #define profiling_stop(id) ((void)0)
 #endif
 
-#define STOPWATCH_MAX_NUM 5 
+#define STOPWATCH_MAX_NUM 7 
 
 void profiling_stopwatch_init(uint32_t id, const char *name);
 
