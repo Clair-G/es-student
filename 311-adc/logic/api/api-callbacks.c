@@ -34,6 +34,8 @@ static void cmd_get_voltage(const command_t *command);
 static void cmd_get_temp(const command_t *command);
 static void cmd_tm_start(const command_t *command);
 static void cmd_tm_stop(const command_t *command);
+static void cmd_charge_on(const command_t *command);
+static void cmd_charge_off(const command_t *command);
 
 const api_command_t api_commands[] = {
     { "info", "device passport", cmd_info },
@@ -51,6 +53,8 @@ const api_command_t api_commands[] = {
 	{ "get_temp", "chip temperature, degrees Celsius", cmd_get_temp },
 	{ "tm_start", "tm_start [<period_ms>]", cmd_tm_start},
 	{ "tm_stop", "tm_stop", cmd_tm_stop },
+	{ "charge_on", "charge on", cmd_charge_on },
+	{ "charge_off", "charge off", cmd_charge_off },
 };
 
 const uint32_t api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
@@ -288,7 +292,7 @@ static void cmd_tm_start(const command_t *command)
 	{	
 		if (command->argc > 1 || !parse_u32(command->argv[0], &period_ms))
 		{
-			printf("error: tm_start [<period>]\n");
+			printf("error: tm_start [<period_ms>]\n");
 			return;
 		}
 	}	
@@ -304,4 +308,15 @@ static void cmd_tm_stop(const command_t *command)
 {
 	telemetry_task_stop();
 	printf("telemetry: stopped\n");
+}
+
+static void cmd_charge_on(const command_t *command)
+{
+	platform_charge_set(true);
+	printf("charge: on\n");
+}
+static void cmd_charge_off(const command_t *command)
+{
+	platform_charge_set(false);
+	printf("charge: off\n");
 }
