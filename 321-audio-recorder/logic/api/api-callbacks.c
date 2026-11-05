@@ -343,7 +343,7 @@ static void cmd_timer_blink_start(const command_t *command)
     }
 
     led_task_set_state(LED_STATE_OFF);
-	printf("timer_blink: started, %lu ms\n", period_ms);
+	printf("timer_blink: started, period %lu ms\n", period_ms);
 	
 }
 
