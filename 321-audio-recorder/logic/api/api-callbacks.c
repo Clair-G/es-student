@@ -471,7 +471,7 @@ static void cmd_dma_cap(const command_t *command)
 	
 	if (counts == 0 || counts > PLATFORM_BLOCK_MAX)
 	{	
-		printf("error:  error: N must be 1..8192\n");
+		printf("error: N must be 1..8192\n");
         return;
 	}
 	

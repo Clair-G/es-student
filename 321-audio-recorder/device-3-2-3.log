@@ -3,62 +3,62 @@
 устройство: 2e8a:000a
 серийный номер: 503359279A87189F
 порт: COM5
-начало: 2026-11-06T17:04:00
+начало: 2026-11-06T17:12:05
    0.000 --> 
-   0.559 --> help
-   0.560 <-- help
-   0.560 <-- help               list of commands
-   0.561 <-- info                device passport
-   0.561 <-- uptime               time since reset
-   0.561 <-- led_enable                     led_enable
-   0.561 <-- led_disable                    led_disable
-   0.561 <-- led_blink                      led_blink
-   0.561 <-- led_period         led_period <period_ms>
-   0.561 <-- button                         button
-   0.561 <-- pi_start calculate pi: pi_start [<terms>]
-   0.562 <-- pi                 returns pi: pi
-   0.562 <-- profiling                    stopwatches
-   0.562 <-- profiling_reset              reset stopwatches
-   0.562 <-- get_voltage   voltage on GP26, ADC input 0
-   0.562 <-- get_temp chip temperature, degrees Celsius
-   0.562 <-- tm_start         tm_start [<period_ms>]
-   0.562 <-- tm_stop                        tm_stop
-   0.562 <-- charge_on                      charge on
-   0.562 <-- charge_off                     charge off
-   0.621 <-- timer_blink_start blink led by timer: timer_blink_start <period_ms>
-   0.622 <-- timer_blink_stop stop timer blink, number of toggles
-   0.622 <-- cap_start      cap_start <N> <period_us>
-   0.622 <-- cap_dump                       cap_dump
-   0.622 <-- dma_cap                    dma_cap <N>
-   1.563 --> info
-   1.626 <-- info
-   1.627 <-- name: es-recorder
-   1.628 <-- version: 1.0.0
-   1.628 <-- project: 321-audio-recorder
-   1.628 <-- repo: https://github.com/Clair-G/es-student
-   1.629 <-- board: pico
-   1.629 <-- serial: 503359279A87189F
-   1.629 <-- chip: manufacturer 0x927, part 0x0002, revision 7
-   1.629 <-- pico-sdk: 2.3.0
-   2.572 --> dma_cap 1000
-   2.635 <-- dma_cap 1000
-   2.635 <-- dma_cap: 1000 samples in 22676 us, expected 22675 us, min 908 max 1425 mean 1166.5
-   3.076 --> dma_cap 4410
-   3.138 <-- dma_cap 4410
-   3.200 <-- dma_cap: 4410 samples in 100000 us, expected 100000 us, min 834 max 985 mean 909.5
-   3.638 --> dma_cap 8192
-   3.701 <-- dma_cap 8192
-   3.889 <-- dma_cap: 8192 samples in 185761 us, expected 185759 us, min 539 max 984 mean 761.5
-   4.143 --> uptime
-   4.205 <-- uptime
-   4.206 <-- uptime: 7900 ms
-   4.644 --> dma_cap 0
-   4.707 <-- dma_cap 0
-   4.707 <-- error:  error: N must be 1..8192
-   5.146 --> dma_cap 9000
-   5.208 <-- dma_cap 9000
-   5.209 <-- error:  error: N must be 1..8192
-   5.708 --> dma_cap
-   5.770 <-- dma_cap
-   5.771 <-- error: usage dma_cap <N>
+   0.554 --> help
+   0.556 <-- help
+   0.556 <-- help               list of commands
+   0.556 <-- info                device passport
+   0.557 <-- uptime               time since reset
+   0.557 <-- led_enable                     led_enable
+   0.557 <-- led_disable                    led_disable
+   0.557 <-- led_blink                      led_blink
+   0.557 <-- led_period         led_period <period_ms>
+   0.557 <-- button                         button
+   0.557 <-- pi_start calculate pi: pi_start [<terms>]
+   0.557 <-- pi                 returns pi: pi
+   0.557 <-- profiling                    stopwatches
+   0.557 <-- profiling_reset              reset stopwatches
+   0.557 <-- get_voltage   voltage on GP26, ADC input 0
+   0.557 <-- get_temp chip temperature, degrees Celsius
+   0.557 <-- tm_start         tm_start [<period_ms>]
+   0.558 <-- tm_stop                        tm_stop
+   0.558 <-- charge_on                      charge on
+   0.558 <-- charge_off                     charge off
+   0.617 <-- timer_blink_start blink led by timer: timer_blink_start <period_ms>
+   0.617 <-- timer_blink_stop stop timer blink, number of toggles
+   0.617 <-- cap_start      cap_start <N> <period_us>
+   0.617 <-- cap_dump                       cap_dump
+   0.617 <-- dma_cap                    dma_cap <N>
+   1.616 --> info
+   1.678 <-- info
+   1.678 <-- name: es-recorder
+   1.678 <-- version: 1.0.0
+   1.678 <-- project: 321-audio-recorder
+   1.678 <-- repo: https://github.com/Clair-G/es-student
+   1.678 <-- board: pico
+   1.679 <-- serial: 503359279A87189F
+   1.679 <-- chip: manufacturer 0x927, part 0x0002, revision 7
+   1.679 <-- pico-sdk: 2.3.0
+   2.617 --> dma_cap 1000
+   2.680 <-- dma_cap 1000
+   2.680 <-- dma_cap: 1000 samples in 22675 us, expected 22675 us, min 912 max 980 mean 946.0
+   3.119 --> dma_cap 4410
+   3.181 <-- dma_cap 4410
+   3.244 <-- dma_cap: 4410 samples in 100001 us, expected 100000 us, min 714 max 980 mean 847.0
+   3.620 --> dma_cap 8192
+   3.683 <-- dma_cap 8192
+   3.872 <-- dma_cap: 8192 samples in 185761 us, expected 185759 us, min 603 max 980 mean 791.5
+   4.124 --> uptime
+   4.187 <-- uptime
+   4.187 <-- uptime: 13363 ms
+   4.628 --> dma_cap 0
+   4.691 <-- dma_cap 0
+   4.692 <-- error: N must be 1..8192
+   5.129 --> dma_cap 9000
+   5.192 <-- dma_cap 9000
+   5.193 <-- error: N must be 1..8192
+   5.636 --> dma_cap
+   5.698 <-- dma_cap
+   5.698 <-- error: usage dma_cap <N>
 итог: отправлено кадров 10, принято строк 47
