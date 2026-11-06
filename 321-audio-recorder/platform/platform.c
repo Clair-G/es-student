@@ -198,3 +198,47 @@ bool platform_capture_start(uint32_t count, uint32_t period_us)
     }
     return true;
 }
+
+bool platform_adc_busy(void)
+{
+	if (adc_user == ADC_CAPTURE) return true; 
+	else return false; 
+}
+
+bool platform_capture_done(void)
+{
+	if (adc_user == ADC_FREE && capture_index >= capture_count && capture_count)
+		return true;
+	else
+		return false;
+}
+
+void platform_capture_get(platform_capture_t *capture)
+{
+	capture->samples = capture_samples;
+	capture->count = capture_count;
+	capture->period_us = capture_period_us;
+	
+	if (capture_count > 1)
+	{
+		capture->min_interval_us = capture_times[1] - capture_times[0];
+		capture->max_interval_us = capture_times[1] - capture_times[0];
+		
+		for (int i = 1; i < (capture_count - 2); i++)
+		{
+			uint32_t time_diff = capture_times[i+1] - capture_times[i];
+			if (time_diff > capture->max_interval_us) 
+				capture->max_interval_us = time_diff;
+			else if (time_diff < capture->min_interval_us)
+				capture->min_interval_us = time_diff;
+		}
+		capture->handler_percent = (float)capture_handler_us * 100.0 / (capture_times[capture_count-1] - capture_times[0]);
+	}
+	else 
+	{
+		capture->max_interval_us = 0;
+		capture->min_interval_us = 0;
+		capture->handler_percent = 0;
+	}
+    
+}

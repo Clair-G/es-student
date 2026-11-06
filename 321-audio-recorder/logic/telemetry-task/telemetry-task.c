@@ -68,3 +68,8 @@ uint32_t telemetry_task_get_period_ms(void)
 {
 	return (uint32_t)telemetry_period_us / 1000;
 }
+
+telemetry_state_t telemetry_task_get_state(void)
+{
+	return telemetry_state;
+}
