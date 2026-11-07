@@ -46,6 +46,7 @@ add_library(logic STATIC
 	${CMAKE_CURRENT_SOURCE_DIR}/logic/pi-task/pi-task.c
  	${CMAKE_CURRENT_SOURCE_DIR}/logic/telemetry-task/telemetry-task.c
  	${CMAKE_CURRENT_SOURCE_DIR}/logic/block-task/block-task.c
+	${CMAKE_CURRENT_SOURCE_DIR}/logic/stream-task/stream-task.c
 	)
 
 # путь к заголовкам — папка logic
