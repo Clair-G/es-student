@@ -536,7 +536,7 @@ static void cmd_stream_stop(const command_t *command)
 		stream_task_stop();
 		platform_blink_stop();
 	}
-	printf("stream: stopped, %lu frames,  %lu samples, %lu overruns\n", 
+	printf("stream: stopped, %lu frames, %lu samples, %lu overruns\n", 
 			 stream_task_get_frames(), stream_task_get_samples(), stream_task_get_overruns());
 			 
 }
