@@ -48,6 +48,9 @@ static void cmd_dma_cap(const command_t *command);
 static void cmd_stream_start(const command_t *command);
 static void cmd_stream_stop(const command_t *command);
 static void cmd_generate_ton(const command_t *command);
+static void cmd_wdt_enable(const command_t *command);
+static void cmd_reset_reason(const command_t *command);
+static void cmd_hang(const command_t *command);
 
 const api_command_t api_commands[] = {
     { "info", "device passport", cmd_info },
@@ -75,6 +78,9 @@ const api_command_t api_commands[] = {
 	{ "stream_start", "stream_start [8|16]", cmd_stream_start },	
 	{ "stream_stop", "stream_start", cmd_stream_stop },	
 	{ "generate_tone", "generate_tone <Hz>", cmd_generate_ton },	
+	{ "wdt_enable", "wdt_enable <timeout_ms>", cmd_wdt_enable },
+	{ "hang", "hang", cmd_hang },	
+	{ "reset_reason", "reset_reason", cmd_reset_reason },
 };
 
 const uint32_t api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
@@ -564,4 +570,41 @@ static void cmd_generate_ton(const command_t *command)
 		printf("tone: %lu Hz\n", freq_hz);
 	
 	return;
+}
+
+static void cmd_hang(const command_t *command)
+{
+    printf("hang: superloop stopped\n");
+
+    // суперцикл больше не идёт, прерывания приходят как прежде
+    while (1)
+    {
+    }
+}
+
+static void cmd_wdt_enable(const command_t *command)
+{
+	uint32_t timeout_ms;
+	
+	if (command->argc > 1 || !parse_u32(command->argv[0], &timeout_ms))
+		{
+			printf("error: usage wdt_enable <timeout_ms>\n");
+			return;
+		}
+		
+	if (!platform_watchdog_enable(timeout_ms))
+	{
+		printf("error: timeout_ms must be 1..8388\n");
+			return;
+	}
+	printf("wdt: enabled, timeout %lu ms\n", timeout_ms);
+}
+
+static void cmd_reset_reason(const command_t *command)
+{
+	uint32_t restarts;
+	if (platform_watchdog_caused_reset(&restarts))
+		printf("reset: watchdog, restarts %lu\n", restarts);
+	else
+		printf("reset: other, restarts %lu\n", restarts);
 }

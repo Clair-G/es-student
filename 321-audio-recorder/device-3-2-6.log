@@ -1,0 +1,85 @@
+задание: 3.2.6
+проект: 321-audio-recorder
+устройство: 2e8a:000a
+серийный номер: 503359279A87189F
+порт: COM5
+начало: 2026-11-08T20:10:11
+   0.000 --> 
+   0.556 --> help
+   0.557 <-- help
+   0.557 <-- help               list of commands
+   0.557 <-- info                device passport
+   0.557 <-- uptime               time since reset
+   0.557 <-- led_enable                     led_enable
+   0.557 <-- led_disable                    led_disable
+   0.557 <-- led_blink                      led_blink
+   0.557 <-- led_period         led_period <period_ms>
+   0.557 <-- button                         button
+   0.558 <-- pi_start calculate pi: pi_start [<terms>]
+   0.558 <-- pi                 returns pi: pi
+   0.558 <-- profiling                    stopwatches
+   0.558 <-- profiling_reset              reset stopwatches
+   0.558 <-- get_voltage   voltage on GP26, ADC input 0
+   0.558 <-- get_temp chip temperature, degrees Celsius
+   0.558 <-- tm_start         tm_start [<period_ms>]
+   0.558 <-- tm_stop                        tm_stop
+   0.558 <-- charge_on                      charge on
+   0.559 <-- charge_off                     charge off
+   0.559 <-- timer_blink_start blink led by timer: timer_blink_start <period_ms>
+   0.559 <-- timer_blink_stop stop timer blink, number of toggles
+   0.559 <-- cap_start      cap_start <N> <period_us>
+   0.559 <-- cap_dump                       cap_dump
+   0.559 <-- dma_cap                    dma_cap <N>
+   0.559 <-- stream_start            stream_start [8|16]
+   0.559 <-- stream_stop                   stream_start
+   0.559 <-- generate_tone             generate_tone <Hz>
+   0.560 <-- wdt_enable        wdt_enable <timeout_ms>
+   0.560 <-- hang                           hang
+   0.617 <-- reset_reason                   reset_reason
+   1.557 --> info
+   1.619 <-- info
+   1.620 <-- name: es-recorder
+   1.620 <-- version: 1.0.0
+   1.620 <-- project: 321-audio-recorder
+   1.621 <-- repo: https://github.com/Clair-G/es-student
+   1.621 <-- board: pico
+   1.621 <-- serial: 503359279A87189F
+   1.621 <-- chip: manufacturer 0x927, part 0x0002, revision 7
+   1.621 <-- pico-sdk: 2.3.0
+   2.565 --> reset_reason
+   2.627 <-- reset_reason
+   2.627 <-- reset: other, restarts 0
+   3.069 --> wdt_enable 9000
+   3.130 <-- wdt_enable 9000
+   3.131 <-- error: timeout_ms must be 1..8388
+   3.569 --> wdt_enable 2000
+   3.632 <-- wdt_enable 2000
+   3.633 <-- wdt: enabled, timeout 2000 ms
+   4.074 --> uptime
+   4.137 <-- uptime
+   4.137 <-- uptime: 10696 ms
+   7.094 --> uptime
+   7.156 <-- uptime
+   7.156 <-- uptime: 13716 ms
+   7.598 --> hang
+   7.661 <-- hang
+   7.662 <-- hang: superloop stopped
+   8.607 --- ждём перезапуска платы
+  10.473 --- плата снова на связи
+  10.474 --> reset_reason
+  10.525 <-- reset_reason
+  10.525 <-- reset: watchdog, restarts 1
+  11.028 --> uptime
+  11.090 <-- uptime
+  11.091 <-- uptime: 1399 ms
+  11.532 --> info
+  11.596 <-- info
+  11.596 <-- name: es-recorder
+  11.599 <-- version: 1.0.0
+  11.599 <-- project: 321-audio-recorder
+  11.599 <-- repo: https://github.com/Clair-G/es-student
+  11.599 <-- board: pico
+  11.600 <-- serial: 503359279A87189F
+  11.600 <-- chip: manufacturer 0x927, part 0x0002, revision 7
+  11.600 <-- pico-sdk: 2.3.0
+итог: отправлено кадров 12, принято строк 64

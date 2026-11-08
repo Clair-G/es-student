@@ -6,7 +6,7 @@
 #include "hardware/dma.h"
 #include "hardware/irq.h"
 #include "hardware/pwm.h"
-
+#include "hardware/watchdog.h"
 
 
 static const uint STATE_BUTTON_PIN = 15;
@@ -27,6 +27,11 @@ static const uint STATE_BUTTON_PIN = 15;
 
 // счёт ШИМ тона: делитель приводит clk_sys к 1 МГц, счётчик считает микросекунды
 #define TONE_COUNT_HZ 1000000
+
+#define WATCHDOG_MAX_MS 8388
+
+static bool watchdog_reset;
+static uint32_t watchdog_restarts;
 
 
 const platform_button_t buttons[] = {
@@ -133,6 +138,20 @@ static void on_stream_buffer(void)
 // запускает стандартный ввод-вывод и настраивает выводы
 void platform_init(void)
 {
+	// причина прошлого сброса; счётчик сбросов подряд хранит scratch-регистр 0,
+    // его не стирает сброс по сторожевому таймеру
+    watchdog_reset = watchdog_enable_caused_reboot();
+    if (watchdog_reset)
+    {
+        watchdog_hw->scratch[0]++;
+    }
+    else
+    {
+        watchdog_hw->scratch[0] = 0;
+    }
+    watchdog_restarts = watchdog_hw->scratch[0];
+	
+	
 	stdio_init_all();
 	buttons_init();
 	led_init();
@@ -508,17 +527,42 @@ bool platform_tone_set(uint32_t freq_hz)
 	if (!freq_hz) 
 	{
 		pwm_set_gpio_level(TONE_PIN, 0);
+		pwm_set_enabled(slice, true);
+		return true;
 	}
-	else 
-	{
-		if (freq_hz < 20 || freq_hz > 20000) 
-			return false;
-		
-		uint32_t period = 1000000 / freq_hz;
-		pwm_set_wrap(slice, (period - 1));
-		pwm_set_gpio_level(TONE_PIN, (period / 2));
-
-	}
+	
+	if (freq_hz < 20 || freq_hz > 20000) 
+		return false;
+	
+	
+	uint32_t period = 1000000 / freq_hz;
+	pwm_set_wrap(slice, (period - 1));
+	pwm_set_gpio_level(TONE_PIN, (period / 2));
 	pwm_set_enabled(slice, true);
 	return true;
 }
+
+
+bool platform_watchdog_enable(uint32_t timeout_ms)
+{
+    if (timeout_ms == 0 || timeout_ms > WATCHDOG_MAX_MS)
+    {
+        return false;
+    }
+
+    // true — не считать, пока ядро остановлено отладчиком
+    watchdog_enable(timeout_ms, true);
+    return true;
+}
+
+void platform_watchdog_feed(void)
+{
+    watchdog_update();
+}
+
+bool platform_watchdog_caused_reset(uint32_t *restarts)
+{
+    *restarts = watchdog_restarts;
+    return watchdog_reset;
+}
+
