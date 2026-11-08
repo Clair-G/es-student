@@ -5,7 +5,7 @@
 #include "hardware/adc.h"
 #include "hardware/dma.h"
 #include "hardware/irq.h"
-
+#include "hardware/pwm.h"
 
 
 
@@ -21,6 +21,12 @@ static const uint STATE_BUTTON_PIN = 15;
 
 // частота clk_adc, от неё делитель отсчитывает шаг
 #define ADC_CLOCK_HZ 48000000.0f
+
+// вывод тона, его меандр делает модуль ШИМ
+#define TONE_PIN 20
+
+// счёт ШИМ тона: делитель приводит clk_sys к 1 МГц, счётчик считает микросекунды
+#define TONE_COUNT_HZ 1000000
 
 
 const platform_button_t buttons[] = {
@@ -65,6 +71,10 @@ static volatile bool stream_ready[2];
 static volatile uint32_t stream_overruns;
 static uint32_t stream_samples;
 static uint32_t stream_next;
+
+
+static uint slice;
+
 
 static void adc_one_shot(void);
 
@@ -131,7 +141,8 @@ void platform_init(void)
 	adc_set_temp_sensor_enabled(true);
 	gpio_init(CHARGE_PIN);
 	gpio_set_dir(CHARGE_PIN, GPIO_OUT);
-   
+
+    
    // канал блока сообщает о конце через DMA_IRQ_1
     block_channel = dma_claim_unused_channel(true);
     dma_channel_set_irq1_enabled(block_channel, true);
@@ -143,6 +154,20 @@ void platform_init(void)
 	stream_channels[1] = dma_claim_unused_channel(true);
 	irq_set_exclusive_handler(DMA_IRQ_0, on_stream_buffer);
 	irq_set_enabled(DMA_IRQ_0, true);
+	
+	gpio_init(TONE_PIN);
+	// GP20 отдан блоку ШИМ
+	gpio_set_function(TONE_PIN, GPIO_FUNC_PWM);
+	slice = pwm_gpio_to_slice_num(TONE_PIN);
+
+	// один отсчёт в микросекунду: 125 МГц / 125 = 1 MHz
+	pwm_set_clkdiv(slice, 125.0f);
+
+	// период 1000 мкс, вывод включён первые 250 мкс
+	pwm_set_wrap(slice, 999);
+	pwm_set_gpio_level(TONE_PIN, 500);
+//	pwm_set_enabled(slice, true);
+
 
 }
 
@@ -474,4 +499,26 @@ void platform_stream_release(void)
 uint32_t platform_stream_overruns(void)
 {
 	return stream_overruns;
+}
+
+// тон на GP20: меандр частоты freq_hz от модуля ШИМ, ядро в нём не участвует;
+// 0 — тон выключен, на выводе снова ноль; false — частота вне 20..20000 Гц
+bool platform_tone_set(uint32_t freq_hz)
+{
+	if (!freq_hz) 
+	{
+		pwm_set_gpio_level(TONE_PIN, 0);
+	}
+	else 
+	{
+		if (freq_hz < 20 || freq_hz > 20000) 
+			return false;
+		
+		uint32_t period = 1000000 / freq_hz;
+		pwm_set_wrap(slice, (period - 1));
+		pwm_set_gpio_level(TONE_PIN, (period / 2));
+
+	}
+	pwm_set_enabled(slice, true);
+	return true;
 }
