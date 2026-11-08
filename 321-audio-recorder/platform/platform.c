@@ -30,6 +30,9 @@ static const uint STATE_BUTTON_PIN = 15;
 
 #define WATCHDOG_MAX_MS 8388
 
+
+
+
 static bool watchdog_reset;
 static uint32_t watchdog_restarts;
 
@@ -564,5 +567,10 @@ bool platform_watchdog_caused_reset(uint32_t *restarts)
 {
     *restarts = watchdog_restarts;
     return watchdog_reset;
+}
+
+float platform_adc_volts(float code)
+{
+	return (float)code * ADC_VREF_V / ADC_LEVELS;
 }
 

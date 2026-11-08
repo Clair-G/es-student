@@ -18,6 +18,7 @@
 #include <string.h>
 #include <errno.h>
 #include <ctype.h>
+#include <math.h>
 
 #define TELEMETRY_DEFAULT_PERIOD_MS 100
 #define STREAM_BLINK_PERIOD_MS 250
@@ -51,6 +52,8 @@ static void cmd_generate_ton(const command_t *command);
 static void cmd_wdt_enable(const command_t *command);
 static void cmd_reset_reason(const command_t *command);
 static void cmd_hang(const command_t *command);
+static void cmd_mic_bias(const command_t *command);
+static void cmd_mic_level (const command_t *command);
 
 const api_command_t api_commands[] = {
     { "info", "device passport", cmd_info },
@@ -81,6 +84,8 @@ const api_command_t api_commands[] = {
 	{ "wdt_enable", "wdt_enable <timeout_ms>", cmd_wdt_enable },
 	{ "hang", "hang", cmd_hang },	
 	{ "reset_reason", "reset_reason", cmd_reset_reason },
+	{ "mic_bias", "mic_bias", cmd_mic_bias },
+	{ "mic_level", "mic_level", cmd_mic_level },
 };
 
 const uint32_t api_command_count = sizeof(api_commands) / sizeof(api_commands[0]);
@@ -107,6 +112,35 @@ static bool parse_u32(const char *text, uint32_t *value)
 
     *value = (uint32_t)number;
     return true;
+}
+
+// среднее и отклонение от среднего в кодах АЦП: среднеквадратичное и наибольшее
+static void block_stats(const uint16_t *samples, uint32_t count, float *mean, float *rms, float *peak)
+{
+    uint32_t sum = 0;
+    for (uint32_t i = 0; i < count; i++)
+    {
+        sum += samples[i];
+    }
+    int32_t center = (int32_t)(sum / count);
+
+    // в целых числах: в float на 8192 отсчётах ядро считало бы в 24 раза дольше
+    uint64_t squares = 0;
+    uint32_t largest = 0;
+    for (uint32_t i = 0; i < count; i++)
+    {
+        int32_t deviation = (int32_t)samples[i] - center;
+        uint32_t size = deviation < 0 ? -deviation : deviation;
+        squares += (uint64_t)(deviation * deviation);
+        if (size > largest)
+        {
+            largest = size;
+        }
+    }
+
+    *mean = (float)sum / count;
+    *rms = sqrtf((float)squares / count);
+    *peak = (float)largest;
 }
 
 
@@ -159,6 +193,30 @@ void print_dma_cap(const uint16_t *samples, uint32_t count, uint32_t time_us)
 	return;
 }
 
+void print_mic_bias(const uint16_t *samples, uint32_t count, uint32_t time_us)
+{
+	float mean;
+	float rms;
+	float peak;
+	block_stats(samples, count, &mean, &rms, &peak);
+	
+	printf("mic: bias %0.3f V\n", platform_adc_volts(mean));
+		
+	return;
+}
+
+void print_mic_level(const uint16_t *samples, uint32_t count, uint32_t time_us)
+{
+	float mean;
+	float rms;
+	float peak;
+	block_stats(samples, count, &mean, &rms, &peak);
+	
+	printf("mic: level %0.1f mV rms, peak %0.1f mV, %lu ms\n", 
+			1000*platform_adc_volts(rms), 1000*platform_adc_volts(peak), count * 1000 / 44100);
+		
+	return;
+}
 
 static void cmd_info(const command_t *command)
 {
@@ -607,4 +665,46 @@ static void cmd_reset_reason(const command_t *command)
 		printf("reset: watchdog, restarts %lu\n", restarts);
 	else
 		printf("reset: other, restarts %lu\n", restarts);
+}
+
+
+
+
+static void cmd_mic_bias(const command_t *command)
+{
+	if (!block_task_start(4410, print_mic_bias))
+	{
+		printf("error: adc is busy\n");	
+		return;
+	}
+}
+
+static void cmd_mic_level (const command_t *command)
+{
+	uint32_t window;
+	uint64_t counts;
+	
+	if (command->argc == 0)
+	{
+		counts = MIC_DEFAULT_WINDOW_MS * 44100 / 1000;
+	}	   
+	else 
+	{	
+		if (command->argc != 1 || !parse_u32(command->argv[0], &window))
+		{
+			printf("usage mic_level [<ms>]\n");
+			return;
+		}
+		counts = (uint64_t)window * 44100 / 1000;
+		if (counts == 0 || counts > 8192)
+		{	
+			printf("error: ms must be 1..185\n");
+			return;
+		}
+	}	
+	if (!block_task_start((uint32_t)counts, print_mic_level))
+	{
+		printf("error: adc is busy\n");	
+		return;
+	}
 }
